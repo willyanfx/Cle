@@ -1,35 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './App.module.scss';
 import {
-    SliderInput,
-    SliderTrack,
-    SliderTrackHighlight,
-    SliderHandle,
+	SliderInput,
+	SliderTrack,
+	SliderTrackHighlight,
+	SliderHandle,
 } from '@reach/slider';
-import { MAX_LENGTH, MIN_LENGTH } from './constant';
-import { useStrengthIndicator } from './helpers';
+import { MAX_LENGTH, MIN_LENGTH, LENGTH, ALPHABET } from './constant';
+import { useStrengthIndicator } from './hooks';
 import Checkbox from './components/Checkbox';
 import Password from './components/Password';
 import { Calc } from './components/Calc';
 import Info from './components/Info';
 import Strength from './components/Strength';
+import { result } from './helpers';
+
+let initialState = {
+	speedUnit: 'hour',
+	speed: 1000,
+	length: LENGTH,
+	alphabet: ALPHABET,
+};
 
 function App() {
-    const [sliderValue, setSliderValue] = useState(0);
-    let { setStrength, strengthStatus } = useStrengthIndicator();
-    function handleSlider(value) {
-        setSliderValue(value);
-        setStrength(value);
-    }
+	const [sliderValue, setSliderValue] = useState(0);
+	let { setStrength, strengthStatus } = useStrengthIndicator();
+	function handleSlider(value) {
+		setSliderValue(value);
+		setStrength(value);
+	}
 
-    return (
+	useEffect(() => {
+		document.title = `Strength: ${strengthStatus}`;
+	}, [strengthStatus]);
+
+	return (
 		<div className={styles.App}>
 			<div className={styles.container}>
-				<div>
-					<header className="App-header">
-						<h1>Resist hacks by Generate a secure password</h1>
-					</header>
-				</div>
+				<header>
+					<h1>Resist hacks by Generate a secure password</h1>
+				</header>
 				<Password />
 				<div className={styles.Slider}>
 					<SliderInput
@@ -68,8 +78,8 @@ function App() {
 					</li>
 				</ul>
 
-                <Calc />
-			    <Info />
+				<Calc />
+				<Info />
 			</div>
 		</div>
 	);

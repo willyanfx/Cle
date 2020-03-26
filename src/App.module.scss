@@ -5,8 +5,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
-	h1 {
-		font-size: 2.6rem;
+	header {
+		margin-top: 3rem;
+		h1 {
+			font-style: normal;
+			font-weight: normal;
+			font-size: 42px;
+			line-height: 52px;
+			color: #ffffff;
+		}
 	}
 
 	&_facts {

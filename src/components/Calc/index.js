@@ -4,7 +4,7 @@ export function Calc() {
     return (
 		<div className={styles.Calc}>
 			<div>
-				speed: <input type="number" min="10000" value={1000} />{' '}
+				speed: <input type="number" min="10000" defaultValue={1000} />
 				passwords per <span>hour</span>/ <span>second</span>
 			</div>
 			<div>

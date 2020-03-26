@@ -1,48 +1,49 @@
-import { useState, useEffect, useRef } from 'react';
+import { UNITS_DICT } from '../constant';
 
-export function useStrengthIndicator() {
-    const [color, setColor] = useState('green');
-    const [strength, setStrength] = useState(4);
-    const [strengthStatus, setStrengthStatus] = useState();
-    let { setBackgroundColor } = useBackground();
-
-    useEffect(() => {
-        if (strength <= 10) {
-            setColor('tomato');
-            setStrengthStatus('Weak');
-        } else if (strength >= 11 && strength <= 12) {
-            setColor('yellow');
-            setStrengthStatus('Fairly');
-        } else {
-            setColor('green');
-            setStrengthStatus('Strong');
-        }
-    }, [strength]);
-
-    useEffect(() => {
-        setBackgroundColor(color);
-    }, [color, setBackgroundColor]);
-
-
-    return { setStrength, strengthStatus, color };
+export function getRandomBits(alphabetLength, size) {
+	return size * (Math.log(alphabetLength) / Math.LN2);
 }
 
-export function useBackground() {
-    const [backgroundColor, setBackgroundColor] = useState();
-    let rootRef = useRef() ;
-
-    useEffect(() => {
-        const updateRootElement = () => {
-            let node = rootRef.current;
-            if (!node) {
-                const root = document.getElementById('root');
-                node = root;
-            }
-            node.setAttribute('style', `--background: ${backgroundColor};`);
-        };
-        updateRootElement();
-    }, [backgroundColor, rootRef]);
-
-    return { setBackgroundColor };
+export function getGenerateForCollision(randomBits, probability) {
+	return Math.sqrt(
+		2 * Math.pow(2, randomBits) * Math.log(1 / (1 - probability))
+	);
 }
 
+export function getTimeToCollision(generateForCollision, speedPerSecond) {
+	return Math.floor(generateForCollision / speedPerSecond);
+}
+
+function pluralize(roundedCurrent) {
+	return roundedCurrent === 1 ? '' : 's';
+}
+
+export function formatDuration(seconds) {
+   let current = seconds;
+   for (let index = 0; index < UNITS_DICT.length; index++) {
+		let timeName = UNITS_DICT[index];
+
+		current /= timeName.num;
+
+		if (!UNITS_DICT[index + 1] || current / UNITS_DICT[index + 1].num < 1) {
+			let roundedCurrent = Math.round(current);
+
+			return `~ ${roundedCurrent} ${timeName.ending +
+				pluralize(roundedCurrent)}`;
+		}
+   }
+}
+
+export function result({ alphabet, length, speed, speedUnit }) {
+	let newSpeed = speedUnit === 'hour' ? speed / 3600 : speed;
+	let ramdomBits = getRandomBits(alphabet.length,  length);
+
+	let probability = 1 / 100; //probability
+	let generateForCollision = getGenerateForCollision(
+        ramdomBits,
+        probability
+        );
+    let timeToCollision = getTimeToCollision(generateForCollision, newSpeed);
+
+	return formatDuration(timeToCollision);
+}
