@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './Checkbox.module.scss';
 
 
-
 export default function Checkbox({
     label,
     onChange,

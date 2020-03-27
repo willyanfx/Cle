@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.scss';
-import {
-	SliderInput,
-	SliderTrack,
-	SliderTrackHighlight,
-	SliderHandle,
-} from '@reach/slider';
+
 import { MAX_LENGTH, MIN_LENGTH, LENGTH, ALPHABET } from './constant';
-import { useStrengthIndicator } from './hooks';
+
 import Checkbox from './components/Checkbox';
 import Password from './components/Password';
 import { Calc } from './components/Calc';
 import Info from './components/Info';
-import Strength from './components/Strength';
+
 import { result } from './helpers';
+import Controls from './components/layout/Controls';
 
 let initialState = {
 	speedUnit: 'hour',
@@ -23,16 +19,8 @@ let initialState = {
 };
 
 function App() {
-	const [sliderValue, setSliderValue] = useState(0);
-	let { setStrength, strengthStatus } = useStrengthIndicator();
-	function handleSlider(value) {
-		setSliderValue(value);
-		setStrength(value);
-	}
 
-	useEffect(() => {
-		document.title = `Strength: ${strengthStatus}`;
-	}, [strengthStatus]);
+
 
 	return (
 		<div className={styles.App}>
@@ -41,22 +29,8 @@ function App() {
 					<h1>Resist hacks by Generate a secure password</h1>
 				</header>
 				<Password />
-				<div className={styles.Slider}>
-					<SliderInput
-						min={MIN_LENGTH}
-						max={MAX_LENGTH}
-						step={1}
-						value={sliderValue}
-						onChange={value => handleSlider(value)}>
-						<SliderTrack>
-							<SliderTrackHighlight />
-							<SliderHandle />
-						</SliderTrack>
-					</SliderInput>
+			<Controls />
 
-					{sliderValue}
-				</div>
-				<Strength>{strengthStatus}</Strength>
 				<ul className={styles.CheckBoxes}>
 					<li>
 						<Checkbox
