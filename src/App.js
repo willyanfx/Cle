@@ -3,7 +3,6 @@ import styles from './App.module.scss';
 
 import { MAX_LENGTH, MIN_LENGTH, LENGTH, ALPHABET } from './constant';
 
-import Checkbox from './components/Checkbox';
 import Password from './components/Password';
 import { Calc } from './components/Calc';
 import Info from './components/Info';
@@ -20,8 +19,6 @@ let initialState = {
 
 function App() {
 
-
-
 	return (
 		<div className={styles.App}>
 			<div className={styles.container}>
@@ -31,26 +28,7 @@ function App() {
 				<Password />
 			<Controls />
 
-				<ul className={styles.CheckBoxes}>
-					<li>
-						<Checkbox
-							label="Letters"
-							onChange={() => console.log('letter')}
-						/>
-					</li>
-					<li>
-						<Checkbox
-							label="Digits"
-							onChange={() => console.log('Digits')}
-						/>
-					</li>
-					<li>
-						<Checkbox
-							label="Symbols"
-							onChange={() => console.log('Symbols')}
-						/>
-					</li>
-				</ul>
+
 
 				<Calc />
 				<Info />
