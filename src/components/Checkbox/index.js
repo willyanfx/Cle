@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
-import styles from './Checkbox.module.scss';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import styles from './GroupCheckbox.module.scss';
+import Checkbox from './Checkbox';
+import { useAppState } from '../../appState';
 
-export default function Checkbox({ label, onChange, checked }) {
-	let hasLabel = label && <span>{label}</span>;
+
+export function GroupCheckbox() {
+	const [state, setState] = useAppState();
+	const [checked, setChecked] = useState(state.checked);
+	const [count, setCount] = useState(1);
+
+
+	const handleCheck = key => {
+		if (count === 1 && checked[key]) return;
+		checked[key] ? setCount(count - 1) : setCount(count + 1);
+		setChecked({
+			...checked,
+			[key]: !checked[key],
+        });
+        setState({
+			...state,
+			checked: {
+				...checked,
+				[key]: !checked[key],
+			},
+		});
+    };
 	return (
-		<label className={[styles.Checkbox, styles.Bounce].join(' ')}>
-			<input type="checkbox" checked={checked} onChange={onChange} />
-			<svg viewBox="0 0 21 21">
-				<polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-			</svg>
-			{hasLabel}
-		</label>
+		<ul className={styles.CheckBoxes}>
+			{Object.keys(checked).map(key => (
+				<li key={key}>
+					<Checkbox
+						label={key}
+						onChange={() => handleCheck(key)}
+						checked={checked[key]}
+					/>
+				</li>
+			))}
+		</ul>
 	);
 }

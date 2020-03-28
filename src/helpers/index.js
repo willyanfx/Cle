@@ -1,4 +1,4 @@
-import { UNITS_DICT } from '../constant';
+import { UNITS_DICT, CHAR } from '../constant';
 
 export function getRandomBits(alphabetLength, size) {
 	return size * (Math.log(alphabetLength) / Math.LN2);
@@ -46,4 +46,34 @@ export function result({ alphabet, length, speed, speedUnit }) {
     let timeToCollision = getTimeToCollision(generateForCollision, newSpeed);
 
 	return formatDuration(timeToCollision);
+}
+
+
+export function limitCalls(fn, limit = 20) {
+	let calls = 0;
+	return (...args) => {
+		calls++;
+		if (calls > limit) {
+			throw new Error(
+				`EASY THERE: You've called "${fn.name}" too many times too quickly`
+			);
+		} else {
+			setTimeout(() => {
+				calls = 0;
+			}, 3000);
+		}
+
+		return fn(...args);
+	};
+}
+
+
+export function getCharacters(checked) {
+    let char = ''
+    for (const key in checked) {
+      if (checked[key]) {
+          char += CHAR[key]
+      }
+    }
+    return char;
 }

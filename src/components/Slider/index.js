@@ -9,17 +9,21 @@ import {
 import '@reach/slider/styles.css';
 import { useStrengthIndicator } from '../../hooks';
 import Strength from '../Strength';
+import { useAppState } from '../../appState';
+import { limitCalls } from '../../helpers';
 
 import styles from './Slider.module.scss';
 
 export function Slider() {
 	const [sliderValue, setSliderValue] = useState(0);
+	let [state, setState] = useAppState();
 
 	let { setStrength, strengthStatus } = useStrengthIndicator();
-	function handleSlider(value) {
+	const handleSlider = (value) =>{
 		setSliderValue(value);
 		setStrength(value);
-	}
+        limitCalls(setState({ ...state, length: sliderValue }))
+    };
 
 	useEffect(() => {
 		document.title = `Strength: ${strengthStatus}`;
