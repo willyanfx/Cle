@@ -29,11 +29,18 @@ useEffect(() => {
 					value={speed}
 					onChange={e => setSpeed(e.target.value)}
 				/>
-				passwords per{' '}
-				<button onClick={() => setUnit('hour')}>
+				passwords per
+				<button
+					data-time={unit === 'hour'}
+					onClick={() => setUnit('hour')}>
 					hour
 				</button>
-				/ <button onClick={() => setUnit('second')}>second</button>
+				/
+				<button
+					data-time={unit === 'second'}
+					onClick={() => setUnit('second')}>
+					second
+				</button>
 			</div>
 			<div>
 				<span>{value}</span>

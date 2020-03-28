@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import ShuffleText from 'shuffle-text';
 
 export function useStrengthIndicator() {
     const [color, setColor] = useState('green');
@@ -46,4 +47,13 @@ export function useBackground() {
     return { setBackgroundColor };
 }
 
-
+export function useAnimation(ref) {
+    useEffect(() => {
+		let text = new ShuffleText(ref.current);
+		text.duration = 3000;
+		text.emptyCharacter = '';
+		// text.sourceRandomCharacter = '1234567890';
+		text.start();
+		return () => text.stop();
+	}, [ref]);
+}

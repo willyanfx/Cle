@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MAX_LENGTH, MIN_LENGTH } from '../../constant';
+import { MAX_LENGTH, MIN_LENGTH, LENGTH } from '../../constant';
 import {
 	SliderInput,
 	SliderTrack,
@@ -15,7 +15,7 @@ import { limitCalls } from '../../helpers';
 import styles from './Slider.module.scss';
 
 export function Slider() {
-	const [sliderValue, setSliderValue] = useState(0);
+	const [sliderValue, setSliderValue] = useState(LENGTH);
 	let [state, setState] = useAppState();
 
 	let { setStrength, strengthStatus } = useStrengthIndicator();

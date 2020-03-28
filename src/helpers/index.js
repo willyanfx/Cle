@@ -19,8 +19,8 @@ function pluralize(roundedCurrent) {
 }
 
 export function formatDuration(seconds) {
-   let current = seconds;
-   for (let index = 0; index < UNITS_DICT.length; index++) {
+	let current = seconds;
+	for (let index = 0; index < UNITS_DICT.length; index++) {
 		let timeName = UNITS_DICT[index];
 
 		current /= timeName.num;
@@ -31,23 +31,18 @@ export function formatDuration(seconds) {
 			return `~ ${roundedCurrent} ${timeName.ending +
 				pluralize(roundedCurrent)}`;
 		}
-   }
+	}
 }
 
-export function result({ alphabet, length, speed, speedUnit }) {
-	let newSpeed = speedUnit === 'hour' ? speed / 3600 : speed;
-	let ramdomBits = getRandomBits(alphabet.length,  length);
-
+export function result({ alphabet, length, speed, unit }) {
+	let newSpeed = unit === 'hour' ? speed / 3600 : speed;
+	let ramdomBits = getRandomBits(alphabet.length, length);
 	let probability = 1 / 100; //probability
-	let generateForCollision = getGenerateForCollision(
-        ramdomBits,
-        probability
-        );
-    let timeToCollision = getTimeToCollision(generateForCollision, newSpeed);
+	let generateForCollision = getGenerateForCollision(ramdomBits, probability);
+	let timeToCollision = getTimeToCollision(generateForCollision, newSpeed);
 
 	return formatDuration(timeToCollision);
 }
-
 
 export function limitCalls(fn, limit = 20) {
 	let calls = 0;
@@ -67,13 +62,29 @@ export function limitCalls(fn, limit = 20) {
 	};
 }
 
-
 export function getCharacters(checked) {
-    let char = ''
-    for (const key in checked) {
-      if (checked[key]) {
-          char += CHAR[key]
-      }
+	let char = '';
+	for (const key in checked) {
+		if (checked[key]) {
+			char += CHAR[key];
+		}
+	}
+	return char;
+}
+
+export function generatePassword(char, size) {
+	let mask = (2 << (Math.log(char.length - 1) / Math.LN2)) - 1;
+    let step = -~((1.6 * mask * size) / char.length);
+
+    return () => {
+        let id = ''
+        while (true) {
+            let bytes = crypto.getRandomValues(new Uint8Array(step))
+            let i = step;
+            while (i--) {
+                id += char[bytes[i] & mask] || ''
+                if(id.length === +size) return id
+            }
+        }
     }
-    return char;
 }
