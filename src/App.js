@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.scss';
-
 import { AppStateProvider } from './appState';
-import Info from './components/Info';
 
 import { Layout } from "./components/Layout";
 
@@ -12,7 +10,6 @@ function App() {
 				<AppStateProvider>
 					<Layout />
 				</AppStateProvider>
-				<Info />
 		</div>
 	);
 }

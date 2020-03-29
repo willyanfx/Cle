@@ -4,8 +4,11 @@ import { GroupCheckbox } from '../Checkbox';
 import { Password } from '../Password';
 import { Result } from '../Result';
 import styles from './Layout.module.scss';
+import { Info } from '../Info';
+import SvgImg from '../Assets/peep-1.svg'
 
 export function Layout() {
+
 	return (
 		<div className={styles.Container}>
 			<div className={styles.Password}>
@@ -17,7 +20,13 @@ export function Layout() {
 				</div>
 			</div>
 			<div className={styles.Info}>
-				<Result />
+				<div>
+					<Result />
+					<Info />
+				</div>
+				<div className={styles.Illustration}>
+					<img src={SvgImg} alt="" />
+				</div>
 			</div>
 		</div>
 	);

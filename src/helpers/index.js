@@ -14,8 +14,9 @@ export function getTimeToCollision(generateForCollision, speedPerSecond) {
 	return Math.floor(generateForCollision / speedPerSecond);
 }
 
-function pluralize(roundedCurrent) {
-	return roundedCurrent === 1 ? '' : 's';
+function pluralize(roundedCurrent, plural) {
+    console.log(plural, roundedCurrent);
+	return roundedCurrent === 1 || plural ? '' : 's';
 }
 
 export function formatDuration(seconds) {
@@ -26,10 +27,10 @@ export function formatDuration(seconds) {
 		current /= timeName.num;
 
 		if (!UNITS_DICT[index + 1] || current / UNITS_DICT[index + 1].num < 1) {
-			let roundedCurrent = Math.round(current);
+            let roundedCurrent = Math.round(current);
 
 			return `~ ${roundedCurrent} ${timeName.ending +
-				pluralize(roundedCurrent)}`;
+				pluralize(roundedCurrent,timeName.plural)}`;
 		}
 	}
 }

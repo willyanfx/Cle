@@ -132,6 +132,7 @@ body,
 	position: relative;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
+	/* eslint-disable-next-line */
 	font-smoothing: antialiased;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -145,6 +146,15 @@ body,
 	display: flex;
 	justify-content: center;
 	margin: 0;
-	padding: 0;
+    padding: 0;
+
+    .svg-background {
+        background: var(--background);
+        color: tomato;
+    }
+    .svgBk {
+        background: tomato;
+    }
 }
 @import url('https://fonts.googleapis.com/css?family=Inter:400,600&display=swap');
+

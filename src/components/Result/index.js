@@ -41,7 +41,7 @@ export function Result() {
 					second
 				</button>
 			</div>
-			<div>
+			<div className={styles.Value}>
 				<span>{value}</span>
 				needed, in order to have a 1% probability of at least one
 				collision.
