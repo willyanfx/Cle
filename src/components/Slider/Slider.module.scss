@@ -57,29 +57,16 @@
 		border-radius: 50%;
 		z-index: 1;
 		transform-origin: center;
-	}
-
-	[data-reach-slider-handle][aria-orientation='horizontal'] {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	[data-reach-slider-handle][aria-orientation='horizontal']:focus {
-		transform: translateY(-50%);
-	}
-
-	[data-reach-slider-handle][aria-orientation='vertical'] {
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
-	[data-reach-slider-handle][aria-orientation='vertical']:focus {
-		transform: translateX(-50%);
+		&:active,
+		&:focus {
+			outline: none;
+		}
 	}
 
 	[data-reach-slider-track-highlight] {
 		border-radius: inherit;
-		background: #00d200;
+		// background: #00d200;
+		background: #00626d;
 	}
 
 	[data-reach-slider-track-highlight][data-orientation='horizontal'] {

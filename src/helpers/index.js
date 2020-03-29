@@ -15,7 +15,6 @@ export function getTimeToCollision(generateForCollision, speedPerSecond) {
 }
 
 function pluralize(roundedCurrent, plural) {
-    console.log(plural, roundedCurrent);
 	return roundedCurrent === 1 || plural ? '' : 's';
 }
 

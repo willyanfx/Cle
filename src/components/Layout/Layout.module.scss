@@ -8,6 +8,11 @@
 .Info {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: 1fr;
+		row-gap: 1rem;
+	}
 }
 
 .Password {
@@ -23,6 +28,10 @@
 	}
 
 	.Wrapper {
+		@media (max-width: 1024px) {
+			grid-template-columns: 1fr;
+			row-gap: 1rem;
+		}
 		width: 100%;
 		display: grid;
 		grid-template-columns: 2fr 1fr;
@@ -31,6 +40,12 @@
 }
 .Illustration {
 	width: 150px;
+	@media (max-width: 1024px) {
+		width: 100%;
+		img {
+			width: 40vw;
+		}
+	}
 	img {
 		width: 20vw;
 	}

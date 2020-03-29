@@ -2,6 +2,9 @@
 	display: flex;
 	padding-top: 0.25rem;
 	justify-content: right;
+	@media (max-width: 1024px) {
+		justify-content: start;
+	}
 	li {
 		width: 100%;
 		margin-right: 2rem;
