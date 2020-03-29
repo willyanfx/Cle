@@ -141,20 +141,12 @@ body,
 #root {
 	--background: #00ac53;
 	background: var(--background);
-	height: 100vh;
+	min-height: 100vh;
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	position: absolute;
 	margin: 0;
-    padding: 0;
-
-    .svg-background {
-        background: var(--background);
-        color: tomato;
-    }
-    .svgBk {
-        background: tomato;
-    }
+	padding: 0;
 }
 @import url('https://fonts.googleapis.com/css?family=Inter:400,600&display=swap');
-

@@ -16,30 +16,34 @@ export function Result() {
 
 	return (
 		<div className={styles.Result}>
-			<div>
-				speed:
-				<input
-					type="number"
-					min="1000"
-					value={speed}
-					onChange={e => setSpeed(e.target.value)}
-				/>
-				passwords per
-				<button
-					className={styles.Toggle}
-					type="switch"
-					data-time={unit === 'hour'}
-					onClick={() => setUnit('hour')}>
-					hour
-				</button>
-				/
-				<button
-					className={styles.Toggle}
-					type="switch"
-					data-time={unit === 'second'}
-					onClick={() => setUnit('second')}>
-					second
-				</button>
+			<div className={styles.Speed}>
+				<span>
+					speed:
+					<input
+						type="number"
+						min="1000"
+						value={speed}
+						onChange={e => setSpeed(e.target.value)}
+					/>
+					passwords per
+				</span>
+				<span>
+					<button
+						className={styles.Toggle}
+						type="switch"
+						data-time={unit === 'hour'}
+						onClick={() => setUnit('hour')}>
+						hour
+					</button>
+					/
+					<button
+						className={styles.Toggle}
+						type="switch"
+						data-time={unit === 'second'}
+						onClick={() => setUnit('second')}>
+						second
+					</button>
+				</span>
 			</div>
 			<div className={styles.Value}>
 				<span>{value}</span>

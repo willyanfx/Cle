@@ -17,7 +17,7 @@ export function Password() {
 	useLayoutEffect(() => {
 		let text = new ShuffleText(passwordRef.current);
 		text.duration = 3000;
-		text.emptyCharacter = '';
+		text.emptyCharacter = '-';
 		text.start();
 		return () => text.stop();
 	}, [result]);
