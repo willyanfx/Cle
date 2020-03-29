@@ -11,8 +11,6 @@ export function Result() {
 
 
 
-
-// alphabet, length, speed, speedUnit
 useEffect(() => {
     let alphabet = getCharacters(checked);
     setValue(result({ alphabet, length , speed, unit}));
@@ -20,7 +18,7 @@ useEffect(() => {
 }, [checked, length, speed, unit])
 
     return (
-		<div className={styles.Calc}>
+		<div className={styles.Result}>
 			<div>
 				speed:
 				<input
@@ -31,12 +29,16 @@ useEffect(() => {
 				/>
 				passwords per
 				<button
+					className={styles.Toggle}
+					type="switch"
 					data-time={unit === 'hour'}
 					onClick={() => setUnit('hour')}>
 					hour
 				</button>
 				/
 				<button
+					className={styles.Toggle}
+					type="switch"
 					data-time={unit === 'second'}
 					onClick={() => setUnit('second')}>
 					second

@@ -1,12 +1,23 @@
 .Slider {
 	width: 100%;
 	display: flex;
+	align-items: center;
+
+	.Number {
+		font-size: 1.8rem;
+		width: 2.2rem;
+		height: 50px;
+		display: block;
+		font-feature-settings: 'tnum';
+		font-variant-numeric: tabular-nums;
+	}
+
 	:root {
 		--reach-slider: 1;
 	}
 
 	[data-reach-slider-input] {
-		padding: 20px;
+		padding-left: 0;
 	}
 
 	[data-reach-slider-input][data-orientation='horizontal'] {

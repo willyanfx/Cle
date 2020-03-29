@@ -1,4 +1,39 @@
-.Calc {
-	margin-top: 1.6rem;
+.Result {
 	text-align: left;
+	width: 100%;
+	white-space: nowrap;
+	font-size: 1rem;
+
+	input {
+		margin: auto 0.5rem;
+		background: transparent;
+		border: none;
+		width: 64px;
+		color: #fff;
+		font-size: 1rem;
+		border-bottom: 1px solid #fff;
+		text-align: right;
+		&[type='number'] {
+			-moz-appearance: textfield;
+		}
+		&[type='number']::-webkit-inner-spin-button,
+		&[type='number']::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			appearance: none;
+			margin: 0;
+		}
+	}
+}
+.Toggle {
+	color: #fff;
+	font-size: 1rem;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+	&[data-time='true'] {
+		margin: auto 0.5rem;
+		background: #fff;
+		color: var(--background);
+	}
 }

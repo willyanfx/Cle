@@ -2,20 +2,20 @@ import { useState, useEffect, useRef } from 'react';
 import ShuffleText from 'shuffle-text';
 
 export function useStrengthIndicator() {
-    const [color, setColor] = useState('green');
-    const [strength, setStrength] = useState(4);
+    const [color, setColor] = useState('#00ac53');
+    const [strength, setStrength] = useState();
     const [strengthStatus, setStrengthStatus] = useState();
     let { setBackgroundColor } = useBackground();
 
     useEffect(() => {
         if (strength <= 10) {
-            setColor('tomato');
+            setColor('#ee2d29');
             setStrengthStatus('Weak');
         } else if (strength >= 11 && strength <= 12) {
-            setColor('yellow');
+            setColor('#f8ae2c');
             setStrengthStatus('Fairly');
         } else {
-            setColor('green');
+            setColor('#00ac53');
             setStrengthStatus('Strong');
         }
     }, [strength]);
@@ -47,13 +47,3 @@ export function useBackground() {
     return { setBackgroundColor };
 }
 
-export function useAnimation(ref) {
-    useEffect(() => {
-		let text = new ShuffleText(ref.current);
-		text.duration = 3000;
-		text.emptyCharacter = '';
-		// text.sourceRandomCharacter = '1234567890';
-		text.start();
-		return () => text.stop();
-	}, [ref]);
-}

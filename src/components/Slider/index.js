@@ -19,11 +19,11 @@ export function Slider() {
 	let [state, setState] = useAppState();
 
 	let { setStrength, strengthStatus } = useStrengthIndicator();
-	const handleSlider = (value) =>{
+	const handleSlider = value => {
 		setSliderValue(value);
 		setStrength(value);
-        limitCalls(setState({ ...state, length: sliderValue }))
-    };
+		limitCalls(setState({ ...state, length: sliderValue }));
+	};
 
 	useEffect(() => {
 		document.title = `Strength: ${strengthStatus}`;
@@ -42,8 +42,7 @@ export function Slider() {
 						<SliderHandle />
 					</SliderTrack>
 				</SliderInput>
-
-				{sliderValue}
+				<div className={styles.Number}>{sliderValue}</div>
 			</div>
 			<Strength>{strengthStatus}</Strength>
 		</div>
