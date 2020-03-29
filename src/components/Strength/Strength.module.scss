@@ -1,3 +1,13 @@
 .Strength {
 	text-align: left;
+	display: flex;
+	align-items: center;
+	.Icon {
+		height: 2rem;
+		width: 2rem;
+	}
+	span:last-child {
+		margin-left: 0.25rem;
+		font-size: 1.6rem;
+	}
 }

@@ -11,6 +11,10 @@
 		font-feature-settings: 'tnum';
 		font-variant-numeric: tabular-nums;
 	}
+	.Status {
+		--size: 2rem;
+		text-align: left;
+	}
 
 	:root {
 		--reach-slider: 1;

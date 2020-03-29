@@ -5,6 +5,7 @@ import { generatePassword, getCharacters, limitCalls } from '../../helpers';
 import styles from './Password.module.scss';
 import { useAnimation } from '../../hooks';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyIcon, RefreshIcon } from '../Assets/Icons';
 
 export function Password() {
 	const passwordRef = useRef();
@@ -28,17 +29,18 @@ export function Password() {
 		setResult(result);
 	}, [checked, length, refresh]);
 
-    console.log(refresh)
 	return (
 		<div className={styles.Container}>
 			<div ref={passwordRef} className={styles.Password}>
 				{result}
 			</div>
-			<div className={styles.Buttons}>
+			<div className={styles.ContainerBtn}>
 				<CopyToClipboard text={result}>
-					<button>Copy</button>
+					<button>
+						<CopyIcon />
+					</button>
 				</CopyToClipboard>
-				<button onClick={() => setRefresh(!refresh)}>Refresh</button>
+				<button data-refresh onClick={() => setRefresh(!refresh)}><RefreshIcon /></button>
 			</div>
 		</div>
 	);

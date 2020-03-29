@@ -4,20 +4,17 @@ import { useAppState } from '../../appState';
 import { result, getCharacters } from '../../helpers';
 
 export function Result() {
-    const [{ checked, length }, setState] = useAppState();
-    const [value, setValue] = useState(0)
-    const [unit, setUnit] = useState('hour')
-    const [speed, setSpeed] = useState(1000);
+	const [{ checked, length }, setState] = useAppState();
+	const [value, setValue] = useState(0);
+	const [unit, setUnit] = useState('hour');
+	const [speed, setSpeed] = useState(1000);
 
+	useEffect(() => {
+		let alphabet = getCharacters(checked);
+		setValue(result({ alphabet, length, speed, unit }));
+	}, [checked, length, speed, unit]);
 
-
-useEffect(() => {
-    let alphabet = getCharacters(checked);
-    setValue(result({ alphabet, length , speed, unit}));
-
-}, [checked, length, speed, unit])
-
-    return (
+	return (
 		<div className={styles.Result}>
 			<div>
 				speed:

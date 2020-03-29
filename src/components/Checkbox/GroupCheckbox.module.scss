@@ -1,6 +1,9 @@
 .CheckBoxes {
 	display: flex;
+	padding-top: 0.25rem;
+	justify-content: right;
 	li {
-		margin-right: 3rem;
+		width: 100%;
+		margin-right: 2rem;
 	}
 }

@@ -11,10 +11,11 @@ export function Layout() {
 			<div className={styles.Password}>
 				<h1>Resist hacks by Generate a secure password</h1>
 				<Password />
-				<Slider />
-				<GroupCheckbox />
+				<div className={styles.Wrapper}>
+					<Slider />
+					<GroupCheckbox />
+				</div>
 			</div>
-			<div className={styles.Illustration}>Illustration</div>
 			<div className={styles.Info}>
 				<Result />
 			</div>

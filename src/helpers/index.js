@@ -63,7 +63,7 @@ export function limitCalls(fn, limit = 20) {
 }
 
 export function getCharacters(checked) {
-	let char = '';
+    let char = '';
 	for (const key in checked) {
 		if (checked[key]) {
 			char += CHAR[key];

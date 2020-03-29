@@ -1,10 +1,9 @@
 export const CHAR = {
-            Letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-            Digits: '*;<>()[]{}#@$?!^~|_-',
-            Symbols: '1234567890'
+			Letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+			Digits: '1234567890',
+			Symbols: '*;<>()[]{}#@$?!^~|_-',
 		};
 
-export const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 export const LENGTH = 13;
 export const MIN_LENGTH = 4;
 export const MAX_LENGTH = 36;

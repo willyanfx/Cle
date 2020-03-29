@@ -27,7 +27,9 @@ export function Slider() {
 
 	useEffect(() => {
 		document.title = `Strength: ${strengthStatus}`;
-	}, [strengthStatus]);
+    }, [strengthStatus]);
+
+    let Icon = `${strengthStatus}Icon`;
 	return (
 		<div>
 			<div className={styles.Slider}>
@@ -44,7 +46,9 @@ export function Slider() {
 				</SliderInput>
 				<div className={styles.Number}>{sliderValue}</div>
 			</div>
-			<Strength>{strengthStatus}</Strength>
+			<div className={styles.Status}>
+				<Strength level={strengthStatus} />
+			</div>
 		</div>
 	);
 }
