@@ -11,13 +11,13 @@ export function Password() {
 	const passwordRef = useRef();
 	const [{ checked, length }, setState] = useAppState();
 	let newPassword = generatePassword(getCharacters(checked), length);
-    const [result, setResult] = useState(newPassword);
-    let [refresh, setRefresh] = useState(true)
+	const [result, setResult] = useState(newPassword);
+	let [refresh, setRefresh] = useState(true);
 
 	useLayoutEffect(() => {
 		let text = new ShuffleText(passwordRef.current);
 		text.duration = 3000;
-		text.emptyCharacter = '-';
+		text.emptyCharacter = '*';
 		text.start();
 		return () => text.stop();
 	}, [result]);
@@ -31,8 +31,8 @@ export function Password() {
 
 	return (
 		<div className={styles.Container}>
-			<div ref={passwordRef} className={styles.Password}>
-				{result}
+			<div className={styles.Password}>
+				<span ref={passwordRef}>{result}</span>
 			</div>
 			<div className={styles.ContainerBtn}>
 				<CopyToClipboard text={result}>
@@ -40,7 +40,9 @@ export function Password() {
 						<CopyIcon />
 					</button>
 				</CopyToClipboard>
-				<button data-refresh onClick={() => setRefresh(!refresh)}><RefreshIcon /></button>
+				<button data-refresh onClick={() => setRefresh(!refresh)}>
+					<RefreshIcon />
+				</button>
 			</div>
 		</div>
 	);

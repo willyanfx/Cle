@@ -1,8 +1,9 @@
 .Result {
 	text-align: left;
 	width: 100%;
-	white-space: nowrap;
+	white-space: wrap;
 	font-size: 1rem;
+	line-height: 1.8rem;
 
 	@media (max-width: 1024px) {
 		white-space: normal;
@@ -15,7 +16,7 @@
 		width: 64px;
 		color: #fff;
 		font-size: 1rem;
-		border-bottom: 1px solid #fff;
+		font-weight: 600;
 		text-align: right;
 		&[type='number'] {
 			-moz-appearance: textfield;
