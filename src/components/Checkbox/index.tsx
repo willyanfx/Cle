@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './GroupCheckbox.module.scss';
+// import styles from './GroupCheckbox.module.scss';
 // import Checkbox from './Checkbox';
 import { useAppState } from '../../appState';
 import { Checkbox } from '../ui/checkbox';
@@ -22,7 +22,7 @@ export function GroupCheckbox() {
     };
 
     return (
-        <ul className={styles.CheckBoxes}>
+        <ul>
             {Object.keys(state.checked).map((key) => (
                 <li key={key}>
                     <Checkbox

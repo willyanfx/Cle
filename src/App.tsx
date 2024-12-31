@@ -1,11 +1,11 @@
-import styles from './App.module.scss';
+// import styles from './App.module.scss';
 import { AppStateProvider } from './appState';
 
 import { Layout } from './components/Layout';
 
 const App: React.FC = () => {
     return (
-        <div className={styles.App}>
+        <div>
             <AppStateProvider>
                 <Layout />
             </AppStateProvider>

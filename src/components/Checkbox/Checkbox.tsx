@@ -1,4 +1,4 @@
-import styles from './Checkbox.module.scss';
+// import styles from './Checkbox.module.scss';
 
 type CheckboxProps = {
     label: string;
@@ -13,7 +13,7 @@ export default function Checkbox({
 }: CheckboxProps) {
     let hasLabel = label && <span>{label}</span>;
     return (
-        <label className={[styles.Checkbox, styles.Bounce].join(' ')}>
+        <label>
             <input
                 type="checkbox"
                 checked={checked}

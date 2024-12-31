@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import styles from './Result.module.scss';
+// import styles from './Result.module.scss';
 import { useAppState } from '../../appState';
 import { result, getCharacters } from '../../helpers';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
 
 export function Result() {
     const { checked, length } = useAppState();
@@ -15,38 +17,38 @@ export function Result() {
     }, [checked, length, speed, unit]);
 
     return (
-        <div className={styles.Result}>
-            <div className={styles.Speed}>
+        <div>
+            <div>
                 <span>
                     speed:
-                    <input
+                    <Input
                         type="number"
-                        min="1000"
+                        min={1000}
                         value={speed}
-                        onChange={(e) => setSpeed(e.target.value)}
+                        onChange={(e) =>
+                            setSpeed(Number(e.target.value))
+                        }
                     />
                     passwords per
                 </span>
                 <span>
-                    <button
-                        className={styles.Toggle}
+                    <Button
                         data-time={unit === 'hour'}
                         onClick={() => setUnit('hour')}
                     >
                         hour
-                    </button>
+                    </Button>
                     /
-                    <button
-                        className={styles.Toggle}
+                    <Button
                         data-time={unit === 'second'}
                         onClick={() => setUnit('second')}
                     >
                         second
-                    </button>
+                    </Button>
                 </span>
             </div>
-            <div className={styles.Value}>
-                <span>{value}</span>
+            <div>
+                <span>{value} </span>
                 needed, in order to have a 1% probability of at least
                 one collision.
             </div>

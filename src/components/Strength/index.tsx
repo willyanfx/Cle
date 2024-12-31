@@ -1,4 +1,4 @@
-import styles from './Strength.module.scss';
+// import styles from './Strength.module.scss';
 import { StrongIcon, FairlyIcon, WeakIcon } from '../Assets/Icons';
 
 export default function Strength({ level }: { level: string }) {
@@ -18,8 +18,8 @@ export default function Strength({ level }: { level: string }) {
     }
 
     return (
-        <div className={styles.Strength}>
-            <span className={styles.Icon}>{icon}</span>
+        <div>
+            <span>{icon}</span>
             <span>{level}</span>
         </div>
     );

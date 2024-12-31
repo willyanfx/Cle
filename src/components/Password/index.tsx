@@ -6,7 +6,7 @@ import {
     getCharacters,
     limitCalls,
 } from '../../helpers';
-import styles from './Password.module.scss';
+// import styles from './Password.module.scss';
 // import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { CopyIcon, RefreshIcon } from '../Assets/Icons';
 
@@ -36,11 +36,11 @@ export function Password() {
     }, [checked, length, refresh]);
 
     return (
-        <div className={styles.Container}>
-            <div className={styles.Password}>
+        <div>
+            <div>
                 <span ref={passwordRef}>{result}</span>
             </div>
-            <div className={styles.ContainerBtn}>
+            <div>
                 {/* <CopyToClipboard text={result}> */}
                 <button>
                     <CopyIcon />

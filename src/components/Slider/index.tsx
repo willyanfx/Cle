@@ -12,7 +12,7 @@ import Strength from '../Strength';
 import { useAppState } from '../../appState';
 import { limitCalls } from '../../helpers';
 
-import styles from './Slider.module.scss';
+// import styles from './Slider.module.scss';
 
 export function Slider() {
     const [sliderValue, setSliderValue] = useState(LENGTH);
@@ -31,8 +31,9 @@ export function Slider() {
 
     return (
         <div>
-            <div className={styles.Slider}>
-                <SliderInput
+            <div>
+                <Slider />
+                {/* <SliderInput
                     min={MIN_LENGTH}
                     max={MAX_LENGTH}
                     step={1}
@@ -43,10 +44,10 @@ export function Slider() {
                         <SliderTrackHighlight />
                         <SliderHandle />
                     </SliderTrack>
-                </SliderInput>
-                <div className={styles.Number}>{sliderValue}</div>
+                </SliderInput> */}
+                <div>{sliderValue}</div>
             </div>
-            <div className={styles.Status}>
+            <div>
                 <Strength level={strengthStatus} />
             </div>
         </div>
