@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+// import styles from './GroupCheckbox.module.scss';
+// import Checkbox from './Checkbox';
+import { useAppState } from '../../appState';
+import { Checkbox } from '../ui/checkbox';
+
+export function GroupCheckbox() {
+    const [state, setState] = useAppState();
+    const [count, setCount] = useState(1);
+    const handleCheck = (key) => {
+        if (count === 1 && state.checked[key]) return;
+        state.checked[key]
+            ? setCount(count - 1)
+            : setCount(count + 1);
+        setState({
+            ...state,
+            checked: {
+                ...state.checked,
+                [key]: !state.checked[key],
+            },
+        });
+    };
+
+    return (
+        <ul>
+            {Object.keys(state.checked).map((key) => (
+                <li key={key}>
+                    <Checkbox
+                        onChange={() => handleCheck(key)}
+                        checked={state.checked[key]}
+                    >
+                        {key}
+                    </Checkbox>
+                </li>
+            ))}
+        </ul>
+    );
+}
